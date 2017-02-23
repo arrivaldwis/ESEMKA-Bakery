@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="selectiontestwsc2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employeeid" />
+    </Key>
+    <Property Name="employeeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employeename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeeaddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeephone" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="incomingrawmaterialheaders" Relationship="Self.FK__incomingr__emplo__239E4DCF" FromRole="employee" ToRole="incomingrawmaterialheader" />
+    <NavigationProperty Name="productionheaders" Relationship="Self.FK__productio__emplo__1CF15040" FromRole="employee" ToRole="productionheader" />
+    <NavigationProperty Name="rawmaterials" Relationship="Self.FK__rawmateri__emplo__145C0A3F" FromRole="employee" ToRole="rawmaterial" />
+    <NavigationProperty Name="recipeheaders" Relationship="Self.FK__recipehea__emplo__182C9B23" FromRole="employee" ToRole="recipeheader" />
+    <NavigationProperty Name="sellingheaders" Relationship="Self.FK__sellinghe__emplo__2E1BDC42" FromRole="employee" ToRole="sellingheader" />
+  </EntityType>
+  <EntityType Name="food">
+    <Key>
+      <PropertyRef Name="foodid" />
+    </Key>
+    <Property Name="foodid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="foodname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="productiondetails" Relationship="Self.FK__productio__foodi__20C1E124" FromRole="food" ToRole="productiondetail" />
+    <NavigationProperty Name="recipeheaders" Relationship="Self.FK__recipehea__foodi__173876EA" FromRole="food" ToRole="recipeheader" />
+    <NavigationProperty Name="sellingdetails" Relationship="Self.FK__sellingde__foodi__31EC6D26" FromRole="food" ToRole="sellingdetail" />
+  </EntityType>
+  <EntityType Name="incomingrawmaterialdetail">
+    <Key>
+      <PropertyRef Name="incomingrawmaterialid" />
+      <PropertyRef Name="rawmaterialid" />
+    </Key>
+    <Property Name="incomingrawmaterialid" Type="Int32" Nullable="false" />
+    <Property Name="rawmaterialid" Type="Int32" Nullable="false" />
+    <Property Name="priceper100gram" Type="Int32" Nullable="false" />
+    <Property Name="bestbeforedate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="weightingram" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="incomingrawmaterialheader" Relationship="Self.FK_incomingrawmaterialdetail_incomingrawmaterialheader" FromRole="incomingrawmaterialdetail" ToRole="incomingrawmaterialheader" />
+    <NavigationProperty Name="rawmaterial" Relationship="Self.FK_incomingrawmaterialdetail_rawmaterial" FromRole="incomingrawmaterialdetail" ToRole="rawmaterial" />
+  </EntityType>
+  <EntityType Name="incomingrawmaterialheader">
+    <Key>
+      <PropertyRef Name="incomingrawmaterialid" />
+    </Key>
+    <Property Name="incomingrawmaterialid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="incomingdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="employeeid" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__incomingr__emplo__239E4DCF" FromRole="incomingrawmaterialheader" ToRole="employee" />
+    <NavigationProperty Name="incomingrawmaterialdetails" Relationship="Self.FK_incomingrawmaterialdetail_incomingrawmaterialheader" FromRole="incomingrawmaterialheader" ToRole="incomingrawmaterialdetail" />
+    <NavigationProperty Name="rawmaterialintakes" Relationship="Self.FK_rawmaterialintake_incomingrawmaterialheader" FromRole="incomingrawmaterialheader" ToRole="rawmaterialintake" />
+  </EntityType>
+  <EntityType Name="productiondetail">
+    <Key>
+      <PropertyRef Name="productionid" />
+      <PropertyRef Name="batchnumber" />
+      <PropertyRef Name="foodid" />
+    </Key>
+    <Property Name="productionid" Type="Int32" Nullable="false" />
+    <Property Name="batchnumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="foodid" Type="Int32" Nullable="false" />
+    <Property Name="productionoutputqty" Type="Int32" Nullable="false" />
+    <Property Name="expireddate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="food" Relationship="Self.FK__productio__foodi__20C1E124" FromRole="productiondetail" ToRole="food" />
+    <NavigationProperty Name="productionheader" Relationship="Self.FK__productio__produ__1FCDBCEB" FromRole="productiondetail" ToRole="productionheader" />
+  </EntityType>
+  <EntityType Name="productionheader">
+    <Key>
+      <PropertyRef Name="productionid" />
+    </Key>
+    <Property Name="productionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productiondate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeeid" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__productio__emplo__1CF15040" FromRole="productionheader" ToRole="employee" />
+    <NavigationProperty Name="productiondetails" Relationship="Self.FK__productio__produ__1FCDBCEB" FromRole="productionheader" ToRole="productiondetail" />
+  </EntityType>
+  <EntityType Name="rawmaterial">
+    <Key>
+      <PropertyRef Name="rawmaterialid" />
+    </Key>
+    <Property Name="rawmaterialid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rawmaterialname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeeid" Type="Int32" Nullable="false" />
+    <Property Name="inputeddate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__rawmateri__emplo__145C0A3F" FromRole="rawmaterial" ToRole="employee" />
+    <NavigationProperty Name="incomingrawmaterialdetails" Relationship="Self.FK_incomingrawmaterialdetail_rawmaterial" FromRole="rawmaterial" ToRole="incomingrawmaterialdetail" />
+    <NavigationProperty Name="rawmaterialintakes" Relationship="Self.FK_rawmaterialintake_rawmaterial" FromRole="rawmaterial" ToRole="rawmaterialintake" />
+    <NavigationProperty Name="recipedetails" Relationship="Self.FK_recipedetail_rawmaterial" FromRole="rawmaterial" ToRole="recipedetail" />
+  </EntityType>
+  <EntityType Name="rawmaterialintake">
+    <Key>
+      <PropertyRef Name="batchnumber" />
+      <PropertyRef Name="rawmaterialid" />
+      <PropertyRef Name="incomingrawmaterialid" />
+    </Key>
+    <Property Name="batchnumber" Type="Int32" Nullable="false" />
+    <Property Name="rawmaterialid" Type="Int32" Nullable="false" />
+    <Property Name="incomingrawmaterialid" Type="Int32" Nullable="false" />
+    <Property Name="weightingram" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="incomingrawmaterialheader" Relationship="Self.FK_rawmaterialintake_incomingrawmaterialheader" FromRole="rawmaterialintake" ToRole="incomingrawmaterialheader" />
+    <NavigationProperty Name="rawmaterial" Relationship="Self.FK_rawmaterialintake_rawmaterial" FromRole="rawmaterialintake" ToRole="rawmaterial" />
+  </EntityType>
+  <EntityType Name="recipedetail">
+    <Key>
+      <PropertyRef Name="recipeid" />
+      <PropertyRef Name="rawmaterialid" />
+    </Key>
+    <Property Name="recipeid" Type="Int32" Nullable="false" />
+    <Property Name="rawmaterialid" Type="Int32" Nullable="false" />
+    <Property Name="weightingram" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="rawmaterial" Relationship="Self.FK_recipedetail_rawmaterial" FromRole="recipedetail" ToRole="rawmaterial" />
+    <NavigationProperty Name="recipeheader" Relationship="Self.FK_recipedetail_recipeheader" FromRole="recipedetail" ToRole="recipeheader" />
+  </EntityType>
+  <EntityType Name="recipeheader">
+    <Key>
+      <PropertyRef Name="recipeid" />
+    </Key>
+    <Property Name="recipeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="foodid" Type="Int32" Nullable="false" />
+    <Property Name="outputunitinpieces" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeeid" Type="Int32" Nullable="false" />
+    <Property Name="createddate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__recipehea__emplo__182C9B23" FromRole="recipeheader" ToRole="employee" />
+    <NavigationProperty Name="food" Relationship="Self.FK__recipehea__foodi__173876EA" FromRole="recipeheader" ToRole="food" />
+    <NavigationProperty Name="recipedetails" Relationship="Self.FK_recipedetail_recipeheader" FromRole="recipeheader" ToRole="recipedetail" />
+  </EntityType>
+  <EntityType Name="sellingdetail">
+    <Key>
+      <PropertyRef Name="foodid" />
+      <PropertyRef Name="batchnumber" />
+      <PropertyRef Name="sellingid" />
+    </Key>
+    <Property Name="sellingid" Type="Int32" Nullable="false" />
+    <Property Name="foodid" Type="Int32" Nullable="false" />
+    <Property Name="batchnumber" Type="Int32" Nullable="false" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="food" Relationship="Self.FK__sellingde__foodi__31EC6D26" FromRole="sellingdetail" ToRole="food" />
+    <NavigationProperty Name="sellingheader" Relationship="Self.FK__sellingde__selli__30F848ED" FromRole="sellingdetail" ToRole="sellingheader" />
+  </EntityType>
+  <EntityType Name="sellingheader">
+    <Key>
+      <PropertyRef Name="sellingid" />
+    </Key>
+    <Property Name="sellingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sellingdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="discount" Type="Int32" Nullable="false" />
+    <Property Name="employeeid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employee" Relationship="Self.FK__sellinghe__emplo__2E1BDC42" FromRole="sellingheader" ToRole="employee" />
+    <NavigationProperty Name="sellingdetails" Relationship="Self.FK__sellingde__selli__30F848ED" FromRole="sellingheader" ToRole="sellingdetail" />
+  </EntityType>
+  <Association Name="FK__incomingr__emplo__239E4DCF">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="incomingrawmaterialheader" Type="Self.incomingrawmaterialheader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="incomingrawmaterialheader">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productio__emplo__1CF15040">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="productionheader" Type="Self.productionheader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="productionheader">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rawmateri__emplo__145C0A3F">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="rawmaterial" Type="Self.rawmaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="rawmaterial">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipehea__emplo__182C9B23">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="recipeheader" Type="Self.recipeheader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="recipeheader">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sellinghe__emplo__2E1BDC42">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="sellingheader" Type="Self.sellingheader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="sellingheader">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productio__foodi__20C1E124">
+    <End Role="food" Type="Self.food" Multiplicity="1" />
+    <End Role="productiondetail" Type="Self.productiondetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="food">
+        <PropertyRef Name="foodid" />
+      </Principal>
+      <Dependent Role="productiondetail">
+        <PropertyRef Name="foodid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipehea__foodi__173876EA">
+    <End Role="food" Type="Self.food" Multiplicity="1" />
+    <End Role="recipeheader" Type="Self.recipeheader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="food">
+        <PropertyRef Name="foodid" />
+      </Principal>
+      <Dependent Role="recipeheader">
+        <PropertyRef Name="foodid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sellingde__foodi__31EC6D26">
+    <End Role="food" Type="Self.food" Multiplicity="1" />
+    <End Role="sellingdetail" Type="Self.sellingdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="food">
+        <PropertyRef Name="foodid" />
+      </Principal>
+      <Dependent Role="sellingdetail">
+        <PropertyRef Name="foodid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_incomingrawmaterialdetail_incomingrawmaterialheader">
+    <End Role="incomingrawmaterialheader" Type="Self.incomingrawmaterialheader" Multiplicity="1" />
+    <End Role="incomingrawmaterialdetail" Type="Self.incomingrawmaterialdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="incomingrawmaterialheader">
+        <PropertyRef Name="incomingrawmaterialid" />
+      </Principal>
+      <Dependent Role="incomingrawmaterialdetail">
+        <PropertyRef Name="incomingrawmaterialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_incomingrawmaterialdetail_rawmaterial">
+    <End Role="rawmaterial" Type="Self.rawmaterial" Multiplicity="1" />
+    <End Role="incomingrawmaterialdetail" Type="Self.incomingrawmaterialdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rawmaterial">
+        <PropertyRef Name="rawmaterialid" />
+      </Principal>
+      <Dependent Role="incomingrawmaterialdetail">
+        <PropertyRef Name="rawmaterialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rawmaterialintake_incomingrawmaterialheader">
+    <End Role="incomingrawmaterialheader" Type="Self.incomingrawmaterialheader" Multiplicity="1" />
+    <End Role="rawmaterialintake" Type="Self.rawmaterialintake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="incomingrawmaterialheader">
+        <PropertyRef Name="incomingrawmaterialid" />
+      </Principal>
+      <Dependent Role="rawmaterialintake">
+        <PropertyRef Name="incomingrawmaterialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productio__produ__1FCDBCEB">
+    <End Role="productionheader" Type="Self.productionheader" Multiplicity="1" />
+    <End Role="productiondetail" Type="Self.productiondetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productionheader">
+        <PropertyRef Name="productionid" />
+      </Principal>
+      <Dependent Role="productiondetail">
+        <PropertyRef Name="productionid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rawmaterialintake_rawmaterial">
+    <End Role="rawmaterial" Type="Self.rawmaterial" Multiplicity="1" />
+    <End Role="rawmaterialintake" Type="Self.rawmaterialintake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rawmaterial">
+        <PropertyRef Name="rawmaterialid" />
+      </Principal>
+      <Dependent Role="rawmaterialintake">
+        <PropertyRef Name="rawmaterialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_recipedetail_rawmaterial">
+    <End Role="rawmaterial" Type="Self.rawmaterial" Multiplicity="1" />
+    <End Role="recipedetail" Type="Self.recipedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rawmaterial">
+        <PropertyRef Name="rawmaterialid" />
+      </Principal>
+      <Dependent Role="recipedetail">
+        <PropertyRef Name="rawmaterialid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_recipedetail_recipeheader">
+    <End Role="recipeheader" Type="Self.recipeheader" Multiplicity="1" />
+    <End Role="recipedetail" Type="Self.recipedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipeheader">
+        <PropertyRef Name="recipeid" />
+      </Principal>
+      <Dependent Role="recipedetail">
+        <PropertyRef Name="recipeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sellingde__selli__30F848ED">
+    <End Role="sellingheader" Type="Self.sellingheader" Multiplicity="1" />
+    <End Role="sellingdetail" Type="Self.sellingdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sellingheader">
+        <PropertyRef Name="sellingid" />
+      </Principal>
+      <Dependent Role="sellingdetail">
+        <PropertyRef Name="sellingid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="selectiontestwsc2017Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="employees" EntityType="Self.employee" />
+    <EntitySet Name="foods" EntityType="Self.food" />
+    <EntitySet Name="incomingrawmaterialdetails" EntityType="Self.incomingrawmaterialdetail" />
+    <EntitySet Name="incomingrawmaterialheaders" EntityType="Self.incomingrawmaterialheader" />
+    <EntitySet Name="productiondetails" EntityType="Self.productiondetail" />
+    <EntitySet Name="productionheaders" EntityType="Self.productionheader" />
+    <EntitySet Name="rawmaterials" EntityType="Self.rawmaterial" />
+    <EntitySet Name="rawmaterialintakes" EntityType="Self.rawmaterialintake" />
+    <EntitySet Name="recipedetails" EntityType="Self.recipedetail" />
+    <EntitySet Name="recipeheaders" EntityType="Self.recipeheader" />
+    <EntitySet Name="sellingdetails" EntityType="Self.sellingdetail" />
+    <EntitySet Name="sellingheaders" EntityType="Self.sellingheader" />
+    <AssociationSet Name="FK__incomingr__emplo__239E4DCF" Association="Self.FK__incomingr__emplo__239E4DCF">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="incomingrawmaterialheader" EntitySet="incomingrawmaterialheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productio__emplo__1CF15040" Association="Self.FK__productio__emplo__1CF15040">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="productionheader" EntitySet="productionheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rawmateri__emplo__145C0A3F" Association="Self.FK__rawmateri__emplo__145C0A3F">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="rawmaterial" EntitySet="rawmaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipehea__emplo__182C9B23" Association="Self.FK__recipehea__emplo__182C9B23">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="recipeheader" EntitySet="recipeheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sellinghe__emplo__2E1BDC42" Association="Self.FK__sellinghe__emplo__2E1BDC42">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="sellingheader" EntitySet="sellingheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productio__foodi__20C1E124" Association="Self.FK__productio__foodi__20C1E124">
+      <End Role="food" EntitySet="foods" />
+      <End Role="productiondetail" EntitySet="productiondetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipehea__foodi__173876EA" Association="Self.FK__recipehea__foodi__173876EA">
+      <End Role="food" EntitySet="foods" />
+      <End Role="recipeheader" EntitySet="recipeheaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sellingde__foodi__31EC6D26" Association="Self.FK__sellingde__foodi__31EC6D26">
+      <End Role="food" EntitySet="foods" />
+      <End Role="sellingdetail" EntitySet="sellingdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_incomingrawmaterialdetail_incomingrawmaterialheader" Association="Self.FK_incomingrawmaterialdetail_incomingrawmaterialheader">
+      <End Role="incomingrawmaterialheader" EntitySet="incomingrawmaterialheaders" />
+      <End Role="incomingrawmaterialdetail" EntitySet="incomingrawmaterialdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_incomingrawmaterialdetail_rawmaterial" Association="Self.FK_incomingrawmaterialdetail_rawmaterial">
+      <End Role="rawmaterial" EntitySet="rawmaterials" />
+      <End Role="incomingrawmaterialdetail" EntitySet="incomingrawmaterialdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rawmaterialintake_incomingrawmaterialheader" Association="Self.FK_rawmaterialintake_incomingrawmaterialheader">
+      <End Role="incomingrawmaterialheader" EntitySet="incomingrawmaterialheaders" />
+      <End Role="rawmaterialintake" EntitySet="rawmaterialintakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productio__produ__1FCDBCEB" Association="Self.FK__productio__produ__1FCDBCEB">
+      <End Role="productionheader" EntitySet="productionheaders" />
+      <End Role="productiondetail" EntitySet="productiondetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rawmaterialintake_rawmaterial" Association="Self.FK_rawmaterialintake_rawmaterial">
+      <End Role="rawmaterial" EntitySet="rawmaterials" />
+      <End Role="rawmaterialintake" EntitySet="rawmaterialintakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_recipedetail_rawmaterial" Association="Self.FK_recipedetail_rawmaterial">
+      <End Role="rawmaterial" EntitySet="rawmaterials" />
+      <End Role="recipedetail" EntitySet="recipedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_recipedetail_recipeheader" Association="Self.FK_recipedetail_recipeheader">
+      <End Role="recipeheader" EntitySet="recipeheaders" />
+      <End Role="recipedetail" EntitySet="recipedetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sellingde__selli__30F848ED" Association="Self.FK__sellingde__selli__30F848ED">
+      <End Role="sellingheader" EntitySet="sellingheaders" />
+      <End Role="sellingdetail" EntitySet="sellingdetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

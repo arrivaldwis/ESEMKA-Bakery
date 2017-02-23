@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E792CC25-C81C-4CC5-94BD-72F53B0A975C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TO2_ESEMKA_BAKERY</RootNamespace>
+    <AssemblyName>TO2_ESEMKA_BAKERY</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="baseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="baseForm.Designer.cs">
+      <DependentUpon>baseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\CashflowModel.cs" />
+    <Compile Include="Class\Helpers.cs" />
+    <Compile Include="employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="food.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="incomingrawmaterialdetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="incomingrawmaterialheader.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="productiondetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="productionheader.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rawmaterial.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rawmaterialintake.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="recipedetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="recipeheader.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sellingdetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sellingheader.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\addEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addEmployee.Designer.cs">
+      <DependentUpon>addEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addFood.Designer.cs">
+      <DependentUpon>addFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addIncomingRawMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addIncomingRawMaterial.Designer.cs">
+      <DependentUpon>addIncomingRawMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addProduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addProduction.Designer.cs">
+      <DependentUpon>addProduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addRawMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addRawMaterial.Designer.cs">
+      <DependentUpon>addRawMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addRecipe.Designer.cs">
+      <DependentUpon>addRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\addSelling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addSelling.Designer.cs">
+      <DependentUpon>addSelling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\changePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\changePassword.Designer.cs">
+      <DependentUpon>changePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewCashFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewCashFlow.Designer.cs">
+      <DependentUpon>viewCashFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewFoodStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewFoodStock.Designer.cs">
+      <DependentUpon>viewFoodStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewIncomingRawMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewIncomingRawMaterial.Designer.cs">
+      <DependentUpon>viewIncomingRawMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewProduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewProduction.Designer.cs">
+      <DependentUpon>viewProduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewRawMaterialStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewRawMaterialStock.Designer.cs">
+      <DependentUpon>viewRawMaterialStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\viewSelling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\viewSelling.Designer.cs">
+      <DependentUpon>viewSelling.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Report\reportCashFlow.rdlc" />
+    <EmbeddedResource Include="View\addEmployee.resx">
+      <DependentUpon>addEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addFood.resx">
+      <DependentUpon>addFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addIncomingRawMaterial.resx">
+      <DependentUpon>addIncomingRawMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addProduction.resx">
+      <DependentUpon>addProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addRawMaterial.resx">
+      <DependentUpon>addRawMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addRecipe.resx">
+      <DependentUpon>addRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\addSelling.resx">
+      <DependentUpon>addSelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\changePassword.resx">
+      <DependentUpon>changePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewCashFlow.resx">
+      <DependentUpon>viewCashFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewFoodStock.resx">
+      <DependentUpon>viewFoodStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewIncomingRawMaterial.resx">
+      <DependentUpon>viewIncomingRawMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewProduction.resx">
+      <DependentUpon>viewProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewRawMaterialStock.resx">
+      <DependentUpon>viewRawMaterialStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\viewSelling.resx">
+      <DependentUpon>viewSelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\TO2_ESEMKA_BAKERY.Class.cashFlowModel.datasource" />
+    <None Include="Properties\DataSources\TO2_ESEMKA_BAKERY.Class.CashflowModel1.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

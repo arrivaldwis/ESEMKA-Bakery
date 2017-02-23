@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="selectiontestwsc2017ModelStoreContainer" CdmEntityContainer="selectiontestwsc2017Entities">
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="employeename" ColumnName="employeename" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="employeeaddress" ColumnName="employeeaddress" />
+          <ScalarProperty Name="employeephone" ColumnName="employeephone" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foods">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.food">
+        <MappingFragment StoreEntitySet="food">
+          <ScalarProperty Name="foodid" ColumnName="foodid" />
+          <ScalarProperty Name="foodname" ColumnName="foodname" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incomingrawmaterialdetails">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.incomingrawmaterialdetail">
+        <MappingFragment StoreEntitySet="incomingrawmaterialdetail">
+          <ScalarProperty Name="incomingrawmaterialid" ColumnName="incomingrawmaterialid" />
+          <ScalarProperty Name="rawmaterialid" ColumnName="rawmaterialid" />
+          <ScalarProperty Name="priceper100gram" ColumnName="priceper100gram" />
+          <ScalarProperty Name="bestbeforedate" ColumnName="bestbeforedate" />
+          <ScalarProperty Name="weightingram" ColumnName="weightingram" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incomingrawmaterialheaders">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.incomingrawmaterialheader">
+        <MappingFragment StoreEntitySet="incomingrawmaterialheader">
+          <ScalarProperty Name="incomingrawmaterialid" ColumnName="incomingrawmaterialid" />
+          <ScalarProperty Name="incomingdate" ColumnName="incomingdate" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productiondetails">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.productiondetail">
+        <MappingFragment StoreEntitySet="productiondetail">
+          <ScalarProperty Name="productionid" ColumnName="productionid" />
+          <ScalarProperty Name="batchnumber" ColumnName="batchnumber" />
+          <ScalarProperty Name="foodid" ColumnName="foodid" />
+          <ScalarProperty Name="productionoutputqty" ColumnName="productionoutputqty" />
+          <ScalarProperty Name="expireddate" ColumnName="expireddate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productionheaders">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.productionheader">
+        <MappingFragment StoreEntitySet="productionheader">
+          <ScalarProperty Name="productionid" ColumnName="productionid" />
+          <ScalarProperty Name="productiondate" ColumnName="productiondate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rawmaterials">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.rawmaterial">
+        <MappingFragment StoreEntitySet="rawmaterial">
+          <ScalarProperty Name="rawmaterialid" ColumnName="rawmaterialid" />
+          <ScalarProperty Name="rawmaterialname" ColumnName="rawmaterialname" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="inputeddate" ColumnName="inputeddate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rawmaterialintakes">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.rawmaterialintake">
+        <MappingFragment StoreEntitySet="rawmaterialintake">
+          <ScalarProperty Name="batchnumber" ColumnName="batchnumber" />
+          <ScalarProperty Name="rawmaterialid" ColumnName="rawmaterialid" />
+          <ScalarProperty Name="incomingrawmaterialid" ColumnName="incomingrawmaterialid" />
+          <ScalarProperty Name="weightingram" ColumnName="weightingram" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipedetails">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.recipedetail">
+        <MappingFragment StoreEntitySet="recipedetail">
+          <ScalarProperty Name="recipeid" ColumnName="recipeid" />
+          <ScalarProperty Name="rawmaterialid" ColumnName="rawmaterialid" />
+          <ScalarProperty Name="weightingram" ColumnName="weightingram" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recipeheaders">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.recipeheader">
+        <MappingFragment StoreEntitySet="recipeheader">
+          <ScalarProperty Name="recipeid" ColumnName="recipeid" />
+          <ScalarProperty Name="foodid" ColumnName="foodid" />
+          <ScalarProperty Name="outputunitinpieces" ColumnName="outputunitinpieces" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sellingdetails">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.sellingdetail">
+        <MappingFragment StoreEntitySet="sellingdetail">
+          <ScalarProperty Name="sellingid" ColumnName="sellingid" />
+          <ScalarProperty Name="foodid" ColumnName="foodid" />
+          <ScalarProperty Name="batchnumber" ColumnName="batchnumber" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sellingheaders">
+      <EntityTypeMapping TypeName="selectiontestwsc2017Model.sellingheader">
+        <MappingFragment StoreEntitySet="sellingheader">
+          <ScalarProperty Name="sellingid" ColumnName="sellingid" />
+          <ScalarProperty Name="sellingdate" ColumnName="sellingdate" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

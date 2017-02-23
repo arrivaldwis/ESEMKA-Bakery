@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f7fdf0abb4444ceea7dec20b2d61b8f4" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.employee" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.food" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.incomingrawmaterialdetail" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.incomingrawmaterialheader" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.productiondetail" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.productionheader" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.rawmaterial" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.rawmaterialintake" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.recipedetail" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.recipeheader" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.sellingdetail" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="selectiontestwsc2017Model.sellingheader" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__incomingr__emplo__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__productio__emplo__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__rawmateri__emplo__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__recipehea__emplo__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__sellinghe__emplo__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__productio__foodi__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__recipehea__foodi__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__sellingde__foodi__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_incomingrawmaterialdetail_incomingrawmaterialheader" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_incomingrawmaterialdetail_rawmaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_rawmaterialintake_incomingrawmaterialheader" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__productio__produ__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_rawmaterialintake_rawmaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_recipedetail_rawmaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK_recipedetail_recipeheader" ManuallyRouted="false" />
+        <AssociationConnector Association="selectiontestwsc2017Model.FK__sellingde__selli__30F848ED" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
